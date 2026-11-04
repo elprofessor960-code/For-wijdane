@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f8eaf0">
+<title>For Wijdane ♡</title>
+<style>
+:root{--ink:#765d6c;--muted:#9c8290;--cream:#fffaf8}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;color:var(--ink);font-family:Georgia,'Times New Roman',serif;background:radial-gradient(ellipse at 15% 15%,#fff 0,transparent 38%),radial-gradient(ellipse at 85% 20%,#f7dfe8 0,transparent 42%),linear-gradient(135deg,#fbf2ef,#f4e8f2 55%,#e9e7f5);overflow-x:hidden}
+.glow{position:fixed;border-radius:50%;filter:blur(2px);opacity:.45;pointer-events:none}.g1{width:220px;height:220px;background:#fff;top:-80px;right:-70px}.g2{width:180px;height:180px;background:#f3cbd8;bottom:-60px;left:-60px}
+.wrap{width:min(760px,92%);margin:auto;padding:45px 0 38px;position:relative}.top{text-align:center;font:11px Arial,sans-serif;letter-spacing:4px;text-transform:uppercase;color:#b38d9e}
+.card{margin:24px auto 0;padding:clamp(26px,6vw,56px);border:1px solid #ffffffc9;border-radius:28px;background:#fffaf8b8;box-shadow:0 20px 70px #8c66751a;backdrop-filter:blur(10px);text-align:center}
+.flower{font-size:34px;display:block;margin-bottom:12px;animation:float 4s ease-in-out infinite}h1{font-size:clamp(42px,9vw,72px);font-weight:400;line-height:1.02;margin:8px 0 12px;color:#9d7185}.subtitle{font-size:17px;color:var(--muted);font-style:italic;margin:0 0 26px}.rule{width:54px;height:1px;background:#d7aaba;margin:25px auto}.intro{font-size:18px;line-height:1.8;max-width:540px;margin:auto;color:#806b77}
+button{border:0;border-radius:999px;padding:13px 22px;background:linear-gradient(120deg,#d9a6b7,#c9b3d9);color:white;font:14px Arial,sans-serif;letter-spacing:.3px;cursor:pointer;box-shadow:0 8px 22px #b88da533;transition:transform .2s;margin:5px}button:hover{transform:translateY(-2px)}button:disabled{opacity:.8;cursor:default}
+.controls{margin-top:22px}.music-note{font-size:12px;color:#a78c9a;margin-top:8px}
+.reveal{display:none;margin:26px auto 0;max-width:560px;text-align:left;padding:clamp(20px,4vw,28px);border-radius:20px;background:#fff9f8;border:1px solid #f2dfe5;animation:appear .8s ease both}.reveal.show{display:block}.reveal p{font-size:17px;line-height:1.9;margin:0 0 14px}.sign{text-align:right!important;color:#a17a8d;font-style:italic;margin-top:20px!important}
+.footer{text-align:center;margin:25px 0 0;font-size:13px;color:#ad929f}
+.sparkle{position:fixed;pointer-events:none;color:#d8a9bb;animation:drift linear infinite;opacity:.65}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}@keyframes appear{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}@keyframes drift{from{transform:translateY(105vh) rotate(0deg);opacity:0}15%{opacity:.7}to{transform:translateY(-10vh) rotate(240deg);opacity:0}}
+@media(max-width:480px){.wrap{padding-top:30px}.card{border-radius:22px}.intro{font-size:16px}.reveal p{font-size:16px}}
+</style>
+</head>
+<body>
+<div class="glow g1"></div><div class="glow g2"></div>
+<div class="wrap">
+  <div class="top">a little something, just for you</div>
+  <main class="card">
+    <span class="flower">✿</span>
+    <div class="top">November 4 · A day to celebrate</div>
+    <h1>Happy Birthday,<br>Wijdane</h1>
+    <p class="subtitle">May your day feel as lovely as you are.</p>
+    <div class="rule"></div>
+    <p class="intro">Some days deserve a little extra magic. Today is one of them. So here's a tiny corner of the internet made just to remind you how much happiness you deserve.</p>
+    <div class="rule"></div>
+    <button id="open">Open your little surprise ♡</button>
+    <div class="controls">
+      <button id="music" type="button">♫ Play a soft melody</button>
+      <div class="music-note">A gentle original melody, made for this little page.</div>
+    </div>
+    <section class="reveal" id="message">
+      <p>Wijdane, I hope this new chapter brings you peaceful mornings, unexpected reasons to smile, beautiful memories, and dreams that slowly find their way into reality.</p>
+      <p>I'm genuinely glad our paths crossed. Even from a distance, I wanted to make you a little something today, just to remind you that you deserve to feel appreciated and celebrated.</p>
+      <p>May life be gentle with you, may your heart always find reasons to feel light, and may you never lose the lovely spark that makes you who you are.</p>
+      <p>Keep being yourself, keep shining in your own way, and remember that you deserve every good thing coming your way.</p>
+      <p class="sign">Happy birthday, Wijdane. ♡<br>— Oussama</p>
+    </section>
+  </main>
+  <div class="footer">made with a little thought & a lot of good wishes ✧</div>
+</div>
+<script>
+document.getElementById('open').addEventListener('click',function(){
+ const message=document.getElementById('message');message.classList.add('show');this.textContent='A little wish, just for you ♡';this.disabled=true;message.scrollIntoView({behavior:'smooth',block:'nearest'});
+});
+// Original soft ambient notes generated in-browser; no external audio or copyrighted track.
+let audioCtx=null,playing=false,loopTimer=null,voices=[];
+const musicButton=document.getElementById('music');
+function playChord(){
+ if(!audioCtx||!playing)return;
+ const now=audioCtx.currentTime;
+ const chords=[[261.63,329.63,392.00],[220.00,261.63,329.63],[174.61,220.00,261.63],[196.00,246.94,293.66]];
+ const chord=chords[Math.floor((Date.now()/5000)%chords.length)];
+ chord.forEach((freq,i)=>{
+   const osc=audioCtx.createOscillator(),gain=audioCtx.createGain(),filter=audioCtx.createBiquadFilter();
+   osc.type='sine';osc.frequency.value=freq;filter.type='lowpass';filter.frequency.value=850;
+   gain.gain.setValueAtTime(0,now);gain.gain.linearRampToValueAtTime(0.025,now+1.2);gain.gain.linearRampToValueAtTime(0.001,now+4.5);
+   osc.connect(filter);filter.connect(gain);gain.connect(audioCtx.destination);osc.start(now);osc.stop(now+4.6);voices.push(osc);
+ });
+}
+musicButton.addEventListener('click',async()=>{
+ if(!playing){
+   const AC=window.AudioContext||window.webkitAudioContext;
+   if(!AC){musicButton.textContent='Music is not supported in this browser';return}
+   audioCtx=audioCtx||new AC();await audioCtx.resume();playing=true;playChord();loopTimer=setInterval(playChord,4800);musicButton.textContent='Ⅱ Pause the melody';
+ }else{
+   playing=false;clearInterval(loopTimer);if(audioCtx)await audioCtx.suspend();musicButton.textContent='♫ Play a soft melody';
+ }
+});
+const symbols=['✧','♡','✿','·'];
+for(let i=0;i<19;i++){const s=document.createElement('span');s.className='sparkle';s.textContent=symbols[i%symbols.length];s.style.left=(Math.random()*100)+'vw';s.style.fontSize=(12+Math.random()*14)+'px';s.style.animationDuration=(12+Math.random()*15)+'s';s.style.animationDelay=(-Math.random()*20)+'s';document.body.appendChild(s)}
+</script>
+</body>
+</html>
